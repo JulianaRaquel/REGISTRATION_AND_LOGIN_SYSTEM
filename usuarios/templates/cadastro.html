@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="container" style="text-align: center; margin-top: 40px;">
+        <h1>Cadastre-se</h1>
+       {% if messages %}
+				        <br>
+                            {% for message in messages %}
+                                <div class="alert {{ message.tags }}">
+                                    {{ message }}
+                                 </div>
+                            {% endfor %}
+                    {% endif %}
+        <br>
+        <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
+            <p><label>Usuário:</label></p>
+            <input type="text" name="usuario" placeholder="Usuário...">
+            <br>
+            <br>
+            <p><label>E-mail:</label></p>
+            <input type="email" name="email" placeholder="E-mail...">
+            <br>
+            <br>
+            <p><label>Senha:</label></p>
+            <input type="password" name="senha" placeholder="Senha...">
+            <br>
+            <br>
+            <p><label>Confirme a Senha:</label></p>
+            <input type="password" name="confirmar_senha" placeholder="Confirme a Senha...">
+            <br>
+            <br>
+            <button class="btn btn-success" type="submit">Criar Conta</button>
+        </form>
+    </div>
+</body>
+</html>
